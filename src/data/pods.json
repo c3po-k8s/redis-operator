@@ -1,0 +1,337 @@
+[
+  {
+    "metadata": {
+      "annotations": {
+        "cni.projectcalico.org/containerID": "d9abf3c5851055b570e47a893a63edfa9d840a39c4ccf16d20d11186a2b522fb",
+        "cni.projectcalico.org/podIP": "10.2.87.198/32",
+        "cni.projectcalico.org/podIPs": "10.2.87.198/32"
+      },
+      "creationTimestamp": "2024-03-29T13:51:17.000Z",
+      "generateName": "redis-que-",
+      "labels": {
+        "app": "redis-que",
+        "apps.kubernetes.io/pod-index": "0",
+        "controller-revision-hash": "redis-que-7f49cd5bdc",
+        "statefulset.kubernetes.io/pod-name": "redis-que-0"
+      },
+      "managedFields": [
+        {
+          "apiVersion": "v1",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:metadata": {
+              "f:generateName": {},
+              "f:labels": {
+                ".": {},
+                "f:app": {},
+                "f:apps.kubernetes.io/pod-index": {},
+                "f:controller-revision-hash": {},
+                "f:statefulset.kubernetes.io/pod-name": {}
+              },
+              "f:ownerReferences": {
+                ".": {},
+                "k:{\"uid\":\"d9a85e7b-7842-42e9-b47c-c2ea1033dad6\"}": {}
+              }
+            },
+            "f:spec": {
+              "f:affinity": {
+                ".": {},
+                "f:podAntiAffinity": {
+                  ".": {},
+                  "f:requiredDuringSchedulingIgnoredDuringExecution": {}
+                }
+              },
+              "f:containers": {
+                "k:{\"name\":\"redis-que\"}": {
+                  ".": {},
+                  "f:command": {},
+                  "f:image": {},
+                  "f:imagePullPolicy": {},
+                  "f:name": {},
+                  "f:ports": {
+                    ".": {},
+                    "k:{\"containerPort\":6379,\"protocol\":\"TCP\"}": {
+                      ".": {},
+                      "f:containerPort": {},
+                      "f:name": {},
+                      "f:protocol": {}
+                    }
+                  },
+                  "f:resources": {},
+                  "f:terminationMessagePath": {},
+                  "f:terminationMessagePolicy": {}
+                }
+              },
+              "f:dnsPolicy": {},
+              "f:enableServiceLinks": {},
+              "f:hostname": {},
+              "f:restartPolicy": {},
+              "f:schedulerName": {},
+              "f:securityContext": {},
+              "f:subdomain": {},
+              "f:terminationGracePeriodSeconds": {},
+              "f:tolerations": {}
+            }
+          },
+          "manager": "kubelite",
+          "operation": "Update",
+          "time": "2024-03-29T13:51:17.000Z"
+        },
+        {
+          "apiVersion": "v1",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:metadata": {
+              "f:annotations": {
+                ".": {},
+                "f:cni.projectcalico.org/containerID": {},
+                "f:cni.projectcalico.org/podIP": {},
+                "f:cni.projectcalico.org/podIPs": {}
+              }
+            }
+          },
+          "manager": "calico",
+          "operation": "Update",
+          "subresource": "status",
+          "time": "2024-03-29T13:51:34.000Z"
+        },
+        {
+          "apiVersion": "v1",
+          "fieldsType": "FieldsV1",
+          "fieldsV1": {
+            "f:status": {
+              "f:conditions": {
+                "k:{\"type\":\"ContainersReady\"}": {
+                  ".": {},
+                  "f:lastProbeTime": {},
+                  "f:lastTransitionTime": {},
+                  "f:status": {},
+                  "f:type": {}
+                },
+                "k:{\"type\":\"Initialized\"}": {
+                  ".": {},
+                  "f:lastProbeTime": {},
+                  "f:lastTransitionTime": {},
+                  "f:status": {},
+                  "f:type": {}
+                },
+                "k:{\"type\":\"Ready\"}": {
+                  ".": {},
+                  "f:lastProbeTime": {},
+                  "f:lastTransitionTime": {},
+                  "f:status": {},
+                  "f:type": {}
+                }
+              },
+              "f:containerStatuses": {},
+              "f:hostIP": {},
+              "f:phase": {},
+              "f:podIP": {},
+              "f:podIPs": {
+                ".": {},
+                "k:{\"ip\":\"10.2.87.198\"}": {
+                  ".": {},
+                  "f:ip": {}
+                }
+              },
+              "f:startTime": {}
+            }
+          },
+          "manager": "kubelite",
+          "operation": "Update",
+          "subresource": "status",
+          "time": "2024-03-29T13:51:34.000Z"
+        }
+      ],
+      "name": "redis-que-0",
+      "namespace": "datastore",
+      "ownerReferences": [
+        {
+          "apiVersion": "apps/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "StatefulSet",
+          "name": "redis-que",
+          "uid": "d9a85e7b-7842-42e9-b47c-c2ea1033dad6"
+        }
+      ],
+      "resourceVersion": "11327751",
+      "uid": "61e6e7a2-af29-44cb-9c3a-af149eb80f51"
+    },
+    "spec": {
+      "affinity": {
+        "podAntiAffinity": {
+          "requiredDuringSchedulingIgnoredDuringExecution": [
+            {
+              "labelSelector": {
+                "matchExpressions": [
+                  {
+                    "key": "app",
+                    "operator": "In",
+                    "values": [
+                      "redis-que"
+                    ]
+                  }
+                ]
+              },
+              "topologyKey": "kubernetes.io/hostname"
+            }
+          ]
+        }
+      },
+      "containers": [
+        {
+          "command": [
+            "redis-server",
+            "--timeout 0",
+            "--appendonly no",
+            "--save \"\"",
+            "-- protected-mode no"
+          ],
+          "image": "redis:alpine",
+          "imagePullPolicy": "IfNotPresent",
+          "name": "redis-que",
+          "ports": [
+            {
+              "containerPort": 6379,
+              "name": "client",
+              "protocol": "TCP"
+            }
+          ],
+          "resources": {},
+          "terminationMessagePath": "/dev/termination-log",
+          "terminationMessagePolicy": "File",
+          "volumeMounts": [
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-m59qr",
+              "readOnly": true
+            }
+          ]
+        }
+      ],
+      "dnsPolicy": "ClusterFirst",
+      "enableServiceLinks": true,
+      "hostname": "redis-que-0",
+      "nodeName": "leia03",
+      "preemptionPolicy": "PreemptLowerPriority",
+      "priority": 0,
+      "restartPolicy": "Always",
+      "schedulerName": "default-scheduler",
+      "securityContext": {},
+      "serviceAccount": "default",
+      "serviceAccountName": "default",
+      "subdomain": "redis-que-admin",
+      "terminationGracePeriodSeconds": 3,
+      "tolerations": [
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/unreachable",
+          "operator": "Exists",
+          "tolerationSeconds": 20
+        },
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/not-ready",
+          "operator": "Exists",
+          "tolerationSeconds": 20
+        }
+      ],
+      "volumes": [
+        {
+          "name": "kube-api-access-m59qr",
+          "projected": {
+            "defaultMode": 420,
+            "sources": [
+              {
+                "serviceAccountToken": {
+                  "expirationSeconds": 3607,
+                  "path": "token"
+                }
+              },
+              {
+                "configMap": {
+                  "items": [
+                    {
+                      "key": "ca.crt",
+                      "path": "ca.crt"
+                    }
+                  ],
+                  "name": "kube-root-ca.crt"
+                }
+              },
+              {
+                "downwardAPI": {
+                  "items": [
+                    {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      },
+                      "path": "namespace"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "status": {
+      "conditions": [
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2024-03-29T13:51:17.000Z",
+          "status": "True",
+          "type": "Initialized"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2024-03-29T13:51:34.000Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2024-03-29T13:51:34.000Z",
+          "status": "True",
+          "type": "ContainersReady"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2024-03-29T13:51:17.000Z",
+          "status": "True",
+          "type": "PodScheduled"
+        }
+      ],
+      "containerStatuses": [
+        {
+          "containerID": "containerd://8574514131c28d812eb25a621007c6543e54ae72a38857705f273b9d6d9915c0",
+          "image": "docker.io/library/redis:alpine",
+          "imageID": "docker.io/library/redis@sha256:7635b0bfdd7dd8552b4b31d6541fef07b734614045b45a52fd5cc27c9dada9e2",
+          "lastState": {},
+          "name": "redis-que",
+          "ready": true,
+          "restartCount": 0,
+          "started": true,
+          "state": {
+            "running": {
+              "startedAt": "2024-03-29T13:51:34.000Z"
+            }
+          }
+        }
+      ],
+      "hostIP": "172.40.4.3",
+      "phase": "Running",
+      "podIP": "10.2.87.198",
+      "podIPs": [
+        {
+          "ip": "10.2.87.198"
+        }
+      ],
+      "qosClass": "BestEffort",
+      "startTime": "2024-03-29T13:51:17.000Z"
+    }
+  }
+]

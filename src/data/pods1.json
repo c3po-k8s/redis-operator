@@ -1,0 +1,9 @@
+[
+  {
+    "index": "0",
+    "name": "redis-que-0",
+    "podIP": "10.2.87.198",
+    "phase": "Running",
+    "status": "Ready"
+  }
+]
