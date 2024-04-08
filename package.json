@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "chmod a+x buildtestimage.sh && ./buildtestimage.sh c3pobot/redis-operator"
+    "build": "chmod a+x buildtestimage.sh && ./buildtestimage.sh c3po-k8s/redis-operator",
+    "prod": "chmod a+x buildprodimage.sh && ./buildprodimage.sh c3po-k8s/redis-operator"
   },
   "nodemonConfig": {
       "ignore": ["/app/src/data/*"]
