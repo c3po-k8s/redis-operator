@@ -51,7 +51,7 @@ const createRedisClient = async(index)=>{
       if(!status) status = await startClient(index)
       return status
     }
-    let redisHost = `${SET_NAME}-${index}.${ADMIN_SERVICE_NAME}.${NAME_SPACE}`
+    let redisHost = `${SET_NAME}-${index}.${ADMIN_SERVICE_NAME}.${NAME_SPACE}.svc.cluster.local`
     log.debug(`Creating redis client ${SET_NAME}-${index}....`)
     let tempClient = createClient({socket: { port: 6379, host: redisHost }})
     tempClient.on('error', (err)=>{
@@ -89,6 +89,7 @@ const createRedisClient = async(index)=>{
 const recreateClient = async(index)=>{
   try{
     let status = await destroyRedisClient(index)
+
     if(status) status = await createRedisClient(index)
     return status
   }catch(e){

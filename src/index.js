@@ -4,6 +4,7 @@ import clients from './clients.js'
 import cluster from './cluster.js'
 import k8Api from './k8Api.js'
 let replicaCount = 0
+
 let logLevel = process.env.LOG_LEVEL || log.Level.INFO, notify = true
 //log.setLevel('debug');
 const checkCluster = async()=>{

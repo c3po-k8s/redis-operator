@@ -15,14 +15,17 @@ const getRoles = async(pods = [])=>{
         continue;
       }
       status = clients.status(pods[i].index)
+
       if(!status) status = clients.recreate(pods[i].index)
       if(status) data = await clients.info(pods[i].index)
       if(data){
         data = { ...pods[i], ...data }
         all.push(data)
+
         if(data?.role === 'master' && data.label === 'master') masters.push(data)
         if(data?.role === 'master' && data.label !== 'master') standalone.push(data)
         if(data?.role === 'slave') replicas.push(data)
+
       }
     }
     return { masters: masters, replicas: replicas, standalone: standalone, all: all }
